@@ -1,0 +1,11 @@
+{
+  "presets": [
+    "env",
+    "minify",
+    "stage-0"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "transform-object-rest-spread"
+  ]
+}
