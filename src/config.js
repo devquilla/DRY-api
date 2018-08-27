@@ -18,6 +18,10 @@ if (process.env.NODE_ENV !== 'production') {
    })
 }
 
+const HOST = 'localhost',
+   DIALECT = 'postgres',
+   USERNAME = 'postgres'
+
 const config = {
    all: {
       root: path.join(__dirname, '..'),
@@ -32,28 +36,26 @@ const config = {
 
    test: {
       sequelize: {
-         uri: 'sqlite://',
+         database: 'test-db',
+         username: USERNAME,
+         password: '',
          options: {
-            logging: false,
+            host: HOST,
+            dialect: DIALECT,
             operatorsAliases: false,
-            storage: 'test.sqlite',
-            define: {
-               timestamps: false
-            }
          }
       },
    },
 
    development: {
       sequelize: {
-         uri: 'sqlite://',
+         database: 'dev-db',
+         username: USERNAME,
+         password: '',
          options: {
-            logging: false,
+            host: HOST,
+            dialect: DIALECT,
             operatorsAliases: false,
-            storage: 'dev.sqlite',
-            define: {
-               timestamps: false
-            }
          }
       },
 
@@ -67,17 +69,15 @@ const config = {
 
       // Sequelize connection options
       sequelize: {
-         uri: process.env.SEQUELIZE_URI
-            || 'sqlite://',
+         database: process.env.DB_NAME || 'prod-db',
+         username: process.env.DB_USER,
+         password: process.env.DB_PASS,
          options: {
-            logging: false,
+            host: process.env.DB_HOST || HOST,
+            dialect: DIALECT,
             operatorsAliases: false,
-            storage: 'dist.sqlite',
-            define: {
-               timestamps: false
-            }
          }
-      }
+      },
    }
 
 }
