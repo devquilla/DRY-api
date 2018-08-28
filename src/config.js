@@ -18,9 +18,10 @@ if (process.env.NODE_ENV !== 'production') {
    })
 }
 
-const HOST = 'localhost',
-   DIALECT = 'postgres',
-   USERNAME = 'postgres'
+const postgres = 'postgres'
+const HOST = postgres,
+   DIALECT = postgres,
+   USERNAME = postgres
 
 const config = {
    all: {
@@ -36,7 +37,7 @@ const config = {
 
    test: {
       sequelize: {
-         database: 'test-db',
+         database: 'test_db',
          username: USERNAME,
          password: '',
          options: {
@@ -49,7 +50,7 @@ const config = {
 
    development: {
       sequelize: {
-         database: 'dev-db',
+         database: 'dev_db',
          username: USERNAME,
          password: '',
          options: {
@@ -69,7 +70,7 @@ const config = {
 
       // Sequelize connection options
       sequelize: {
-         database: process.env.DB_NAME || 'prod-db',
+         database: process.env.DB_NAME || 'localhost',
          username: process.env.DB_USER,
          password: process.env.DB_PASS,
          options: {
